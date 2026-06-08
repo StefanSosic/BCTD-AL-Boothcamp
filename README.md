@@ -1,1 +1,0 @@
-# BCTD-AL-Boothcamp
