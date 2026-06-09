@@ -30,6 +30,7 @@
         if Customer.FindSet() then
             repeat
                 if Customer."Credit Limit (LCY)" > 0 then begin
+                    Customer.CalcFields(Balance);
                     CreditUtilisation := Customer.Balance / Customer."Credit Limit (LCY)" * 100;
                     RiskCategory := ClassifyRisk(CreditUtilisation);
                     if RiskCategory in ['HIGH', 'CRITICAL'] then begin

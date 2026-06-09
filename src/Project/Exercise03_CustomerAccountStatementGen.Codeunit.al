@@ -25,12 +25,12 @@
 
         if Customer.FindSet() then
             repeat
+                Customer.CalcFields(Balance, "Balance (LCY)");
                 ProcessedCount += 1;
 
                 if Customer.Balance <> 0 then begin
                     PostingGroup := Customer."Customer Posting Group";
                     StatementLines.Add(BuildStatementLine(Customer, PostingGroup));
-                    Customer.CalcFields(Balance, "Balance (LCY)");
                     TotalBalance += Customer.Balance;
                     TotalLCYBalance += Customer."Balance (LCY)";
                     if IsOverdueBalance(Customer) then
